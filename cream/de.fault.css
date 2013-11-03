@@ -55,7 +55,7 @@
     }
 
     header section h1 { float: left; font-size: 3em; line-height: 1.5em; }
-    header section a { float: right; margin: 0 10px 0 0; }
+    header section a { float: right; margin: 0 10px 0 0; line-height: 5rem; }
 
     section {
         width: 700px;

@@ -56,6 +56,38 @@ Cream('#trigger').on(['click'], [function(ev) {
 		</div>
 	</section>
 
-    <script src="https://raw.github.com/culshaw/Cream/master/cream.min.js"></script>
+    <script src="cream.min.js"></script>
+
+    <script>
+    var log = function(line) {
+	    var logger = document.getElementById('log');
+
+	    logger.innerHTML = logger.innerHTML + "\r\n"+ '> '+ line;
+	}
+
+	var click = Cream('#click').on(['click', 'sample'], [function(ev) {
+	    log('click');
+	}, function() {
+	    log('fired sample');
+
+	    var buttonSample = this;
+
+	    buttonSample.innerHTML = 'Boom';
+
+	    setTimeout(function() {
+	        buttonSample.innerHTML = 'Click';
+	    }, 2000);
+	}]);
+
+	Cream('#hover').on(['mouseenter', 'mouseout'], [function(ev) {
+	    log('mouseenter');
+	}, function(ev) {
+	    log('mouseout');
+	}]);
+
+	Cream('#trigger').on(['click'], [function(ev) {
+	    click.trigger('sample');
+	}]);
+	</script>
 </body>
 </html>

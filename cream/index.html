@@ -28,7 +28,37 @@
 	    <button id="trigger">Trigger custom event</button>
 	    <div id="log" class="code">> event log.</div>
 		<h2>Usage</h2>
-		<p>The following code is what is used for the examples below</p>
+		<p>I've tried to make it as simple as possible to use, take binding a event for example</p>
+		<div class="code">
+Cream('#element_by_id').on([
+    'mouseenter',
+    'mouseout'
+], [
+    function(ev) { /* fires on mouseover */ },
+    function(ev) { /* fires on mouseleave */ }
+]);
+		</div>
+		<p>As you can see the events and their matched callback functions are wrapped in arrays, this is to keep the events and their returners nice and tidy. Chaining will also work if you like that methodology, but currently all arguments for the on and off functions should be wrapped as an array.</p>
+<div class="code">
+var func1 = function(ev) { /* fires on mouseover */ },
+    func2 = function(ev) { /* fires on mouseout */ },
+    hoover;
+
+hoover = Cream('#id').on(['mouseenter'], [func1]).on(['mouseout'], [func2]);
+		</div>
+        <p>Removing an event is even more simple using the <em>off</em> method</p>
+        <div class="code">
+// Using our previous hoover definition since we log
+// function calls in our namespace not on the element itself.
+hoover.off(['mouseenter', mouseout']);
+        </div>
+        <p>Trigger events on other binds via the trigger method</p>
+        <div class="code">
+Cream('#button1').on(['click'], [function(ev) {
+    hoover.trigger('mouseenter');
+}]);
+        </div>
+		<p>The following code is what is used for the examples from higher up</p>
 		<div class="code">
 var click = Cream('#click').on(['click', 'sample'], [function(ev) {
     // log: click
@@ -53,7 +83,17 @@ Cream('#hover').on(['mouseenter', 'mouseout'], [function(ev) {
 Cream('#trigger').on(['click'], [function(ev) {
     click.trigger('sample');
 }]);
+
+Cream(window).on(['load'], [function(ev) {
+    // log window load
+}]);
 		</div>
+		<h2>TODO</h2>
+		<ul>
+			<li>Make it RequireJS compatible</li>
+			<li>Show jsperf against other event binders</li>
+			<li></li>
+		</ul>
 	</section>
 
     <script src="cream.min.js"></script>
@@ -87,6 +127,10 @@ Cream('#trigger').on(['click'], [function(ev) {
 
 	Cream('#trigger').on(['click'], [function(ev) {
 	    click.trigger('sample');
+	}]);
+
+	Cream(window).on(['load'], [function(ev) {
+	    log('window loaded');
 	}]);
 	</script>
 </body>

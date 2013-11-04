@@ -38,14 +38,14 @@
 
     html, body {
         width: 100%;
-        color: #BD941F;
+        color: #696B38;
         font: normal 15px/1.5 Helvetica Neue, Helvetica, Arial;
         background: #FFFAEB;
     }
 
-    a { color: #333;}
+    a { color: #BD941F;}
     p { line-height: 1.5em; }
-    button { background: #FFECB2; color: #BD941F; padding: 5px 10px; margin: 0 5px 0 0; border-radius: 5px; }
+    button { background: #FFECB2; color: #BD941F; padding: 5px 10px; margin: 0 5px 0 0; border-radius: 5px; outline: 0; }
     ul { list-style-position: inside; }
 
     header {
@@ -54,7 +54,7 @@
         background: #FFECB2;
     }
 
-    header section h1 { float: left; font-size: 3em; line-height: 1.5em; }
+    header section h1 { float: left; font-size: 3em; color: #BD941F; line-height: 1.5em; font-weight: lighter; text-shadow: 1px 1px rgba(0,0,0,0.2); }
     header section a { float: right; margin: 0 10px 0 0; line-height: 5rem; }
 
     section {
@@ -64,9 +64,9 @@
 
     section h2 {
         font-size: 2em;
-        font-weight: bold;
+        font-weight: lighter;
         margin: 1em 0 0.5em;
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        text-shadow: 1px 1px rgba(0,0,0,0.2);
     }
 
     .code {
